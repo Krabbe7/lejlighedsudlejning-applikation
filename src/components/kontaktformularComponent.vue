@@ -1,47 +1,67 @@
 <template>
-  <div id="contactForm" class="contact-form">
-    <button id="closeContactForm" class="close-btn">&times;</button>
+  <div id="contactForm" class="contact-form" :class="{ open: isOpen }">
+    <button @click="closeForm" class="close-btn">&times;</button>
     <h2>Kontakt udlejer</h2>
-    <form>
+    <form @submit.prevent="submitForm">
       <label for="name">Navn:</label>
-      <input type="text" id="name" name="name" required />
+      <input type="text" v-model="form.name" id="name" name="name" required />
 
       <label for="email">E-mail:</label>
-      <input type="email" id="email" name="email" required />
+      <input
+        type="email"
+        v-model="form.email"
+        id="email"
+        name="email"
+        required
+      />
 
       <label for="message">Besked:</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
+      <textarea
+        v-model="form.message"
+        id="message"
+        name="message"
+        rows="5"
+        required
+      ></textarea>
 
       <button type="submit">Send besked</button>
     </form>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue"
 
-<style scoped>
-/* Kontakt-knap */
-.contact-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #2c7a7b;
-  color: white;
-  padding: 12px 18px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  z-index: 3;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+const emit = defineEmits(["close"])
+const props = defineProps({
+  isOpen: Boolean,
+})
+
+const form = ref({
+  name: "",
+  email: "",
+  message: "",
+})
+
+const submitForm = () => {
+  console.log("Form submitted", form.value)
+  form.value.name = ""
+  form.value.email = ""
+  form.value.message = ""
+  emit("close")
 }
 
+const closeForm = () => {
+  emit("close")
+}
+</script>
+
+<style scoped>
 /* Flyvende formular */
 .contact-form {
   position: fixed;
   top: 50%;
   right: -400px;
-  /* skjult ud over højre kant */
   transform: translateY(-50%);
   width: 90%;
   max-width: 350px;
@@ -103,18 +123,5 @@
   font-size: 26px;
   cursor: pointer;
   color: #999;
-}
-
-/* Responsiv på små skærme */
-@media (max-width: 500px) {
-  .contact-form {
-    width: 95%;
-    right: -95%;
-    /* Skjul mobilvenligt */
-  }
-
-  .contact-form.open {
-    right: 0;
-  }
 }
 </style>
