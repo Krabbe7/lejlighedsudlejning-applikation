@@ -1,5 +1,25 @@
-# Vue 3 + Vite
+## Project Setup
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Åbn terminalen og sørg for, at du befinder dig i projektmappen:
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+```sh
+cd lejlighedsudlejning-applikation
+```
+
+Kør derefter følgende command i terminalen for at installere nødvendige dependencies
+
+```sh
+npm install
+```
+
+### Compile
+
+Når alle node packages er installeret, så kan projektet startes.
+
+I mappen lejlighedsudlejning-applikation, i terminalen, skal følgende command køres:
+
+```sh
+npm run dev
+```
+
+Clienten burde nu køre på port http://localhost:5173/
