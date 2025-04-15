@@ -57,7 +57,6 @@ const closeForm = () => {
 </script>
 
 <style scoped>
-/* Flyvende formular */
 .contact-form {
   position: fixed;
   top: 50%;
@@ -76,7 +75,6 @@ const closeForm = () => {
   border-radius: 12px;
 }
 
-/* Når formularen er aktiv */
 .contact-form.open {
   right: 0;
 }
@@ -100,6 +98,7 @@ const closeForm = () => {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-family: inherit;
+  resize: none;
 }
 
 .contact-form button[type="submit"] {
@@ -113,7 +112,6 @@ const closeForm = () => {
   font-size: 16px;
 }
 
-/* Luk-knap */
 .close-btn {
   position: absolute;
   top: 12px;

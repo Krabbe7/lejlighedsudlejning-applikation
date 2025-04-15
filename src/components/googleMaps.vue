@@ -1,20 +1,25 @@
 <template>
-  <h2>Placering</h2>
+  <div class="maps-container">
+    <h2>Placering</h2>
 
-  <div class="map">
-    <img
-      src="../assets/Google-maps-location.jpg"
-      alt="Google maps lokation"
-      class="Googlemaps-img"
-    />
+    <div class="map">
+      <img
+        src="../assets/Google-maps-location.jpg"
+        alt="Google maps lokation"
+        class="Googlemaps-img"
+      />
+    </div>
   </div>
 </template>
 
 <script setup></script>
 
 <style scoped>
+.maps-container {
+  margin-top: 80px;
+}
 .map {
-  margin-top: 2rem;
+  margin-top: 30px;
   height: 300px;
   background: #ddd;
   border-radius: 1rem;

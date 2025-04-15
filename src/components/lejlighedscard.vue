@@ -2,10 +2,10 @@
   <div class="container">
     <section class="intro">
       <h1>Velkommen til LejNu.dk</h1>
-      <p>
+      <h2>
         Find din næste lejlighed blandt vores attraktive udlejningsmuligheder i
         hele Danmark. Hurtigt, sikkert og nemt!
-      </p>
+      </h2>
     </section>
 
     <!-- Lejligheds-cards -->
@@ -17,7 +17,9 @@
           <h3>Boulevard 45, 2. tv.</h3>
           <p>Lys og indflytningsklar 3-værelses lejlighed tæt på fjorden.</p>
           <p class="price">Kr. 8.200 / md.</p>
-          <a href="/lejlighedsudlejning.html" class="btn">Læs mere</a>
+          <router-link to="/lejlighedsudlejning" class="btn"
+            >Læs mere</router-link
+          >
         </div>
       </div>
       <div class="card-inactive">
@@ -97,16 +99,16 @@
 <style scoped>
 .intro {
   text-align: center;
-  margin: 2rem 0;
+  margin: 32px 0;
 }
 
 .intro h1 {
-  font-size: 2.5rem;
+  font-size: 40px;
   color: #2c7a7b;
 }
 
-.intro p {
-  font-size: 1.2rem;
+.intro h2 {
+  font-size: 20px;
   max-width: 700px;
   margin: 0 auto;
   color: #555;
@@ -115,13 +117,13 @@
 .apartment-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: 32px;
+  margin-top: 32px;
 }
 
 .card {
   background: white;
-  border-radius: 1rem;
+  border-radius: 16px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   transition: transform 0.3s ease;
@@ -133,7 +135,7 @@
 
 .card-inactive {
   background: white;
-  border-radius: 1rem;
+  border-radius: 16px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   transition: transform 0.3s ease;
@@ -147,31 +149,37 @@
 }
 
 .card-content {
-  padding: 1rem;
+  padding: 16px;
 }
 
 .card-content h2 {
   margin-top: 0;
   color: #2c7a7b;
+  font-size: 22px;
+}
+.card-content h3 {
+  font-size: 20px;
 }
 
 .card-content p {
-  margin: 0.5rem 0;
+  margin: 8px 0;
+  font-size: 18px;
 }
 
 .card-content .price {
   font-weight: 600;
   color: #2c7a7b;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
+  font-size: 20px;
 }
 
 .card .btn {
   display: inline-block;
-  padding: 0.5rem 1rem;
+  padding: 8px 16px;
   background-color: #2c7a7b;
   color: white;
   text-decoration: none;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   font-weight: 600;
   transition: background-color 0.2s ease;
 }
@@ -182,11 +190,11 @@
 
 .btn-inactive {
   display: inline-block;
-  padding: 0.5rem 1rem;
+  padding: 8px 16px;
   background-color: #6e6e6e;
   color: white;
   text-decoration: none;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   font-weight: 600;
   transition: background-color 0.2s ease;
   cursor: default;
