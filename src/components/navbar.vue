@@ -59,6 +59,11 @@ onMounted(() => {
 <style scoped>
 nav {
   background-color: #2c7a7b;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
 }
 
 .nav-container {
