@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <section class="intro">
-      <h1>Velkommen til LejNu.dk</h1>
+      <h1>Velkommen til LejNu</h1>
       <h2>
         Find din næste lejlighed blandt vores attraktive udlejningsmuligheder i
         hele Danmark. Hurtigt, sikkert og nemt!
