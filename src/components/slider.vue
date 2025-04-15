@@ -2,6 +2,7 @@
   <h2>Billeder</h2>
   <div class="gallery">
     <div id="slider">
+      <!-- Billed-galleri -->
       <div class="slider-container">
         <img
           src="../assets/Stue.jpg"
@@ -34,6 +35,8 @@
           class="slider-img"
         />
       </div>
+
+      <!-- Navigationsknapper -->
       <button class="prev">&#10094;</button>
       <button class="next">&#10095;</button>
     </div>
@@ -43,23 +46,29 @@
 <script setup>
 import { ref, onMounted } from "vue"
 
-let currentSlide = 0
-const slides = ref([]) // Slides bliver nu en ref
-const totalSlides = ref(0)
+let currentSlide = 0 // Nuværende slide-index
+const slides = ref([]) // Liste med billeder/slides
+const totalSlides = ref(0) // Antal slides
 const prevBtn = ref(null)
 const nextBtn = ref(null)
 
+// Går til næste/forrige slide
 const moveSlide = (step) => {
   currentSlide += step
+
+  // Hvis man er nået forbi den sidste slide, spring tilbage til første slide
   if (currentSlide >= totalSlides.value) {
     currentSlide = 0
   }
+  // Hvis man forsøger at gå før den første slide, spring til den sidste slide
   if (currentSlide < 0) {
     currentSlide = totalSlides.value - 1
   }
+
   updateSlider()
 }
 
+// Opdaterer sliderens visning
 const updateSlider = () => {
   slides.value.forEach((slide) => {
     slide.style.display = "none"
@@ -67,19 +76,17 @@ const updateSlider = () => {
   slides.value[currentSlide].style.display = "block"
 }
 
+// Når DOM'en er klar (onMounted), hentes slider-billeder og knapper, og der tilføjes klik-handlere til at navigere i billederne samt initialiseres visningen.
 onMounted(() => {
-  // Få fat i elementerne, når komponenten er blevet rendere
   slides.value = document.querySelectorAll(".slider-img")
   totalSlides.value = slides.value.length
 
-  // Få fat i knapperne og tilføj event listeners
   prevBtn.value = document.querySelector(".prev")
   nextBtn.value = document.querySelector(".next")
 
   prevBtn.value?.addEventListener("click", () => moveSlide(-1))
   nextBtn.value?.addEventListener("click", () => moveSlide(1))
 
-  // Initial opdatering af slideren
   updateSlider()
 })
 </script>

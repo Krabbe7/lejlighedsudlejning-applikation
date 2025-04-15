@@ -1,4 +1,5 @@
 <template>
+  <!-- Hero billede -->
   <div class="hero">
     <img
       class="building-img"
@@ -7,19 +8,21 @@
     />
   </div>
 
-  <!-- Lejlighedsinfo -->
+  <!-- Overskrift og adresse -->
   <div class="apartment-header">
     <div class="address-container">
       <h1>Moderne 3-værelses lejlighed tæt på fjorden</h1>
       <h2>Vestre havnebromenade 34, 2. tv., Aalborg</h2>
     </div>
+
+    <!-- Pris og kontaktknap -->
     <div class="price-container">
       <p class="price">DKK 12.500/md</p>
       <button @click="openContactForm" class="contact-btn">Kontakt os</button>
     </div>
   </div>
 
-  <!-- Detaljer -->
+  <!-- Lejlighedsbeskrivelse -->
   <div class="details">
     <div class="description">
       <p>
@@ -32,6 +35,8 @@
         indflytning.
       </p>
     </div>
+
+    <!-- Infoboks med detaljer -->
     <div class="info-box">
       <h2>Detaljer</h2>
       <ul>
@@ -47,6 +52,8 @@
       </ul>
     </div>
   </div>
+
+  <!-- Kontaktformular komponent -->
   <kontaktformularComponent
     :is-open="isContactFormOpen"
     @close="closeContactForm"
@@ -56,13 +63,16 @@
 <script setup>
 import kontaktformularComponent from "./kontaktformularComponent.vue"
 import { ref } from "vue"
-// Reaktiv tilstand til at åbne/lukke kontaktformularen
+
+// Boolean der styrer om kontaktformularen vises
 const isContactFormOpen = ref(false)
 
+// Åbner formularen
 const openContactForm = () => {
   isContactFormOpen.value = true
 }
 
+// Lukker formularen
 const closeContactForm = () => {
   isContactFormOpen.value = false
 }

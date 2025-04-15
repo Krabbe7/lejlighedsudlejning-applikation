@@ -2,13 +2,17 @@
   <header>
     <nav>
       <div class="nav-container">
+        <!-- Logo med router-link -->
         <router-link to="/" class="logo">
           <div class="logo">LejNu</div>
         </router-link>
+
+        <!-- Mobil-menu knap -->
         <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
 
+        <!-- Navigation links -->
         <ul class="nav-links">
-          <!-- Brug router-link her i stedet for at klikke og bruge push -->
+          <!-- Brug af Vue Router-link -->
           <li>
             <router-link to="/" class="nav-item" active-class="active"
               >Forside</router-link
@@ -33,16 +37,16 @@
 <script setup>
 import { ref, onMounted } from "vue"
 
-// Router instans til navigation
+// Referencer til DOM-elementer
 const toggleBtn = ref(null)
 const navLinks = ref(null)
 
+// Til responsiv-menu, når komponenten mountes, tilføjes en klik-håndtering til menu-knappen, som toggler mobilmenuens synlighed ved at tilføje/fjerne klassen "open".
+
 onMounted(() => {
-  // Sørger for, at DOM-elementerne er tilgængelige
   toggleBtn.value = document.querySelector(".menu-toggle")
   navLinks.value = document.querySelector(".nav-links")
 
-  // Tilføjer event listener
   if (toggleBtn.value && navLinks.value) {
     toggleBtn.value.addEventListener("click", () => {
       navLinks.value.classList.toggle("open")

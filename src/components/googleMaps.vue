@@ -1,4 +1,5 @@
 <template>
+  <!-- Google maps lokation-->
   <div class="maps-container">
     <h2>Placering</h2>
 

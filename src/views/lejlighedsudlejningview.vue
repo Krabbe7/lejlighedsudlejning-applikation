@@ -9,7 +9,6 @@
 <script setup>
 import lejlighedInfo from "../components/lejlighedInfo.vue"
 import slider from "../components/slider.vue"
-
 import googleMaps from "../components/googleMaps.vue"
 </script>
 

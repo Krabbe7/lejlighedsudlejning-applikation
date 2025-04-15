@@ -1,11 +1,17 @@
 <template>
+  <!-- Kontaktformular container -->
   <div id="contactForm" class="contact-form" :class="{ open: isOpen }">
+    <!-- Luk-knap -->
     <button @click="closeForm" class="close-btn">&times;</button>
     <h2>Kontakt udlejer</h2>
+
+    <!-- Formular -->
     <form @submit.prevent="submitForm">
+      <!-- Navn -->
       <label for="name">Navn:</label>
       <input type="text" v-model="form.name" id="name" name="name" required />
 
+      <!-- E-mail -->
       <label for="email">E-mail:</label>
       <input
         type="email"
@@ -15,6 +21,7 @@
         required
       />
 
+      <!-- Besked -->
       <label for="message">Besked:</label>
       <textarea
         v-model="form.message"
@@ -24,6 +31,7 @@
         required
       ></textarea>
 
+      <!-- Send knap -->
       <button type="submit">Send besked</button>
     </form>
   </div>
@@ -32,25 +40,32 @@
 <script setup>
 import { ref } from "vue"
 
+// Tillader forælder-komponenten at lytte på 'close'-event
 const emit = defineEmits(["close"])
+
+// Modtager prop om formularen er åben eller ej
 const props = defineProps({
   isOpen: Boolean,
 })
 
+// Opretter en reaktiv reference til formularens data, så felterne automatisk bindes til input via v-model og kan læses/manipuleres med form.value.
 const form = ref({
   name: "",
   email: "",
   message: "",
 })
 
+// Kaldes når brugeren indsender formularen
 const submitForm = () => {
-  console.log("Form submitted", form.value)
+  // Nulstil formularfelterne
   form.value.name = ""
   form.value.email = ""
   form.value.message = ""
+  // Luk formularen
   emit("close")
 }
 
+// Kaldes når brugeren klikker på krydset
 const closeForm = () => {
   emit("close")
 }
