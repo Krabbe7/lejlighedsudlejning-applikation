@@ -35,24 +35,56 @@
 </template>
 
 <script setup>
+// Importer nødvendige funktioner fra Vue
 import { ref, onMounted } from "vue"
 
 // Referencer til DOM-elementer
-const toggleBtn = ref(null)
-const navLinks = ref(null)
+const toggleBtn = ref(null) // Knap til at åbne/lukke menuen
+const navLinks = ref(null) // Selve navigationens link-liste
 
+// Funktion til at toggle menuens synlighed
 const toggleMenu = () => {
-  // Toggler mobilmenuens synlighed
-  navLinks.value.classList.toggle("open")
+  navLinks.value.classList.toggle("open") // Tilføj/fjern "open"-klassen
 }
 
-// Til responsiv-menu, når komponenten mountes, tilføjes en klik-håndtering til menu-knappen,
-// som toggler mobilmenuens synlighed ved at tilføje/fjerne klassen "open".
+// Funktion til at lukke menuen (fjerner "open"-klassen)
+const closeMenu = () => {
+  navLinks.value.classList.remove("open")
+}
+
+// Funktion der lukker menuen, hvis brugeren klikker udenfor menuen og toggle-knappen
+const handleClickOutside = (event) => {
+  if (
+    navLinks.value &&
+    !navLinks.value.contains(event.target) && // Klik ikke inde i menuen
+    !toggleBtn.value.contains(event.target) // Klik ikke på toggle-knappen
+  ) {
+    closeMenu() // Hvis klik var udenfor, luk menuen
+  }
+}
+
+// Når komponenten er mountet (tilføjet til DOM'en)
 onMounted(() => {
+  // Find DOM-elementer
   toggleBtn.value = document.querySelector(".menu-toggle")
   navLinks.value = document.querySelector(".nav-links")
 
+  // Tilføj klik-håndtering til knappen (åbn/luk menu)
   toggleBtn.value?.addEventListener("click", toggleMenu)
+
+  // Når man klikker på et link i menuen, luk menuen (på mobil)
+  const allLinks = navLinks.value.querySelectorAll("a")
+  allLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth <= 768) {
+        // Kun på mobil
+        closeMenu()
+      }
+    })
+  })
+
+  // Tilføj global klik-lytter for at lukke menuen hvis man klikker udenfor
+  document.addEventListener("click", handleClickOutside)
 })
 </script>
 
