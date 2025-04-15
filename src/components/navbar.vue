@@ -41,17 +41,18 @@ import { ref, onMounted } from "vue"
 const toggleBtn = ref(null)
 const navLinks = ref(null)
 
-// Til responsiv-menu, når komponenten mountes, tilføjes en klik-håndtering til menu-knappen, som toggler mobilmenuens synlighed ved at tilføje/fjerne klassen "open".
+const toggleMenu = () => {
+  // Toggler mobilmenuens synlighed
+  navLinks.value.classList.toggle("open")
+}
 
+// Til responsiv-menu, når komponenten mountes, tilføjes en klik-håndtering til menu-knappen,
+// som toggler mobilmenuens synlighed ved at tilføje/fjerne klassen "open".
 onMounted(() => {
   toggleBtn.value = document.querySelector(".menu-toggle")
   navLinks.value = document.querySelector(".nav-links")
 
-  if (toggleBtn.value && navLinks.value) {
-    toggleBtn.value.addEventListener("click", () => {
-      navLinks.value.classList.toggle("open")
-    })
-  }
+  toggleBtn.value?.addEventListener("click", toggleMenu)
 })
 </script>
 
