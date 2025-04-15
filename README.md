@@ -3,7 +3,7 @@
 Åbn terminalen og sørg for, at du befinder dig i projektmappen:
 
 ```sh
-cd lejlighedsudlejning-applikation
+cd lejlighedsudlejning-applikation-main
 ```
 
 Kør derefter følgende command i terminalen for at installere nødvendige dependencies
@@ -16,7 +16,7 @@ npm install
 
 Når alle node packages er installeret, så kan projektet startes.
 
-I mappen lejlighedsudlejning-applikation, i terminalen, skal følgende command køres:
+I mappen lejlighedsudlejning-applikation-main, i terminalen, skal følgende command køres:
 
 ```sh
 npm run dev
