@@ -48,7 +48,7 @@ const props = defineProps({
   isOpen: Boolean,
 })
 
-// Opretter en reaktiv reference til formularens data, så felterne automatisk bindes til input via v-model og kan læses/manipuleres med form.value.
+// Opretter en reaktiv reference til formularens data
 const form = ref({
   name: "",
   email: "",
@@ -58,9 +58,7 @@ const form = ref({
 // Kaldes når brugeren indsender formularen
 const submitForm = () => {
   // Nulstil formularfelterne
-  form.value.name = ""
-  form.value.email = ""
-  form.value.message = ""
+  form.value = { name: "", email: "", message: "" }
   // Luk formularen
   emit("close")
 }
