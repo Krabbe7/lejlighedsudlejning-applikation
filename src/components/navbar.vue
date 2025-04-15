@@ -3,7 +3,7 @@
     <nav>
       <div class="nav-container">
         <router-link to="/" class="logo">
-          <div class="logo">LejNu.dk</div>
+          <div class="logo">LejNu</div>
         </router-link>
         <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
 
@@ -87,7 +87,6 @@ nav {
   text-decoration: none;
   font-weight: 600;
   position: relative;
-  /* Gør at ::after kan positioneres korrekt */
 }
 
 div a {
@@ -95,7 +94,6 @@ div a {
   text-decoration: none;
   font-weight: 600;
   position: relative;
-  /* Gør at ::after kan positioneres korrekt */
 }
 
 .nav-links a.active::after {
@@ -171,36 +169,27 @@ nav ul li a:hover {
 
   .nav-links li {
     padding: 20px 0;
-    /* Juster denne værdi for at ændre højden på knapperne */
     text-align: center;
     width: 100%;
   }
 
   .nav-links li.open {
     display: block;
-    /* Gør at hvert menupunkt ligger på en ny linje */
     text-align: center;
-    /* Centrerer tekst i dropdown menuen */
     padding: 10px 0;
-    /* Afstand omkring tekst */
     width: 100%;
-    /* Sørger for at li-elementet fylder hele bredden af nav-links */
     border-bottom: 1px solid #ddd;
-    /* Streger mellem menupunkterne */
   }
 
-  /* Fjerner streg fra det sidste menupunkt */
   .nav-links.open li {
     border-top: 1px solid #ffffff;
   }
 
-  /* Fjerner streg fra det sidste menupunkt */
   .nav-links.open li:first-child {
     border-top: none;
     border-bottom: none;
   }
 
-  /* Fjerner streg fra det sidste menupunkt */
   .nav-links.open li:last-child {
     border-bottom: none;
   }
