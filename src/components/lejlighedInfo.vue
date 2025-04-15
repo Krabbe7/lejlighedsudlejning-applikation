@@ -171,11 +171,20 @@ h2 {
 @media (max-width: 768px) {
   .details {
     grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .price {
+    margin-top: 20px;
+  }
+
+  .price-container {
+    text-align: center;
   }
 
   .apartment-header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .price-book {

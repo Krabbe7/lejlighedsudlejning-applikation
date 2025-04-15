@@ -127,6 +127,7 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   transition: transform 0.3s ease;
+  max-width: 400px;
 }
 
 .card:hover {
@@ -139,6 +140,7 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   transition: transform 0.3s ease;
+  max-width: 400px;
 }
 
 .card img,
@@ -198,5 +200,13 @@
   font-weight: 600;
   transition: background-color 0.2s ease;
   cursor: default;
+}
+
+@media (max-width: 768px) {
+  .apartment-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 </style>

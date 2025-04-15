@@ -160,9 +160,7 @@ nav ul li a:hover {
     padding: 10px 0;
     gap: 0;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    z-index: 1000;
+    z-index: 3;
   }
 
   .nav-links.open {
@@ -197,10 +195,6 @@ nav ul li a:hover {
 
   .nav-links.open li:last-child {
     border-bottom: none;
-  }
-
-  .nav-container {
-    grid-template-columns: auto auto;
   }
 
   .nav-links {
