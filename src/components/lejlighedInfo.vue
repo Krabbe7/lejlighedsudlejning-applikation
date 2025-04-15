@@ -1,7 +1,7 @@
 <template>
   <div class="hero">
     <img
-      class="bygning-img"
+      class="building-img"
       src="../assets/Bygning.jpg"
       alt="Lejlighed - Bygning"
     />
@@ -9,13 +9,13 @@
 
   <!-- Lejlighedsinfo -->
   <div class="apartment-header">
-    <div class="adresse">
-      <h2>Moderne 3-værelses lejlighed tæt på fjorden</h2>
-      <h3>Vestre havnebromenade 34, 2. tv., Aalborg</h3>
+    <div class="address-container">
+      <h1>Moderne 3-værelses lejlighed tæt på fjorden</h1>
+      <h2>Vestre havnebromenade 34, 2. tv., Aalborg</h2>
     </div>
-    <div class="price-book">
-      <div class="price">DKK 12.500/md</div>
-      <button class="btn">Book nu</button>
+    <div class="price-container">
+      <p class="price">DKK 12.500/md</p>
+      <button @click="openContactForm" class="contact-btn">Kontakt os</button>
     </div>
   </div>
 
@@ -47,86 +47,115 @@
       </ul>
     </div>
   </div>
+  <kontaktformularComponent
+    :is-open="isContactFormOpen"
+    @close="closeContactForm"
+  />
 </template>
 
-<script setup></script>
+<script setup>
+import kontaktformularComponent from "./kontaktformularComponent.vue"
+import { ref } from "vue"
+// Reaktiv tilstand til at åbne/lukke kontaktformularen
+const isContactFormOpen = ref(false)
+
+const openContactForm = () => {
+  isContactFormOpen.value = true
+}
+
+const closeContactForm = () => {
+  isContactFormOpen.value = false
+}
+</script>
 
 <style scoped>
 .apartment-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   background: white;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 10px 20px #0000001a;
 }
 
 .apartment-header h1 {
   margin: 0;
-  font-size: 2rem;
+  font-size: 30px;
 }
 
-.price-book {
+.price-container {
   text-align: right;
 }
 
 .price {
-  font-size: 1.5rem;
+  font-size: 25px;
   font-weight: 600;
   color: #2c7a7b;
+  margin: 0;
 }
 
-.btn {
-  padding: 0.75rem 1.5rem;
+.contact-btn {
+  padding: 12px 24px;
   background-color: #2c7a7b;
   color: white;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 16px;
+  margin-top: 15px;
+}
+.contact-btn:hover {
+  background-color: #225e5f;
 }
 
-.bygning-img {
+.building-img {
   width: 100%;
-  border-radius: 1rem;
+  display: block;
+  border-radius: 15px 15px 0 0;
 }
 
 .details {
   display: grid;
   grid-template-columns: 2fr 1fr;
   column-gap: 10px;
-  margin-top: 2rem;
+  margin: 30px 0 80px 0;
+  padding: 20px;
 }
 
 .description {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.adresse {
-  font-size: 20px;
-}
-
-h3 {
   font-size: 18px;
+  line-height: 25px;
 }
 
+.address {
+  font-size: 22px;
+}
+.address-container h2 {
+  font-size: 22px;
+  margin-top: 20px;
+}
+h2 {
+  font-size: 22px;
+  margin: 0;
+}
 .info-box {
   background: white;
-  padding: 1rem;
-  border-radius: 1rem;
+  padding: 20px;
+  border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   max-width: 400px;
 }
 
 .info-box ul {
   line-height: 30px;
+  font-size: 18px;
 }
 
 .info-box h3 {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 15px;
+  font-size: 20px;
 }
 
 @media (max-width: 768px) {
@@ -141,7 +170,7 @@ h3 {
 
   .price-book {
     text-align: left;
-    margin-top: 1rem;
+    margin-top: 15px;
   }
 
   .info-box {
