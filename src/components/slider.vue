@@ -54,17 +54,7 @@ const nextBtn = ref(null)
 
 // Går til næste/forrige slide
 const moveSlide = (step) => {
-  currentSlide += step
-
-  // Hvis man er nået forbi den sidste slide, spring tilbage til første slide
-  if (currentSlide >= totalSlides.value) {
-    currentSlide = 0
-  }
-  // Hvis man forsøger at gå før den første slide, spring til den sidste slide
-  if (currentSlide < 0) {
-    currentSlide = totalSlides.value - 1
-  }
-
+  currentSlide = (currentSlide + step + totalSlides.value) % totalSlides.value
   updateSlider()
 }
 
@@ -76,7 +66,8 @@ const updateSlider = () => {
   slides.value[currentSlide].style.display = "block"
 }
 
-// Når DOM'en er klar (onMounted), hentes slider-billeder og knapper, og der tilføjes klik-handlere til at navigere i billederne samt initialiseres visningen.
+// Når DOM'en er klar (onMounted), hentes slider-billeder og knapper, og der tilføjes klik-handlere til at navigere i billederne
+// samt initialiseres visningen.
 onMounted(() => {
   slides.value = document.querySelectorAll(".slider-img")
   totalSlides.value = slides.value.length
@@ -87,7 +78,7 @@ onMounted(() => {
   prevBtn.value?.addEventListener("click", () => moveSlide(-1))
   nextBtn.value?.addEventListener("click", () => moveSlide(1))
 
-  updateSlider()
+  updateSlider() // Initialiserer visningen af slideren
 })
 </script>
 
