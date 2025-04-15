@@ -59,11 +59,17 @@ const form = ref({
 const submitForm = () => {
   // Nulstil formularfelterne
   form.value = { name: "", email: "", message: "" }
+
   // Luk formularen
   emit("close")
+
+  // Vis alerten efter at formularen er lukket (forsinkelse på 400ms)
+  setTimeout(() => {
+    alert("Tak for din besked. Vi vender tilbage hurtigst muligt")
+  }, 400) // Forsinkelsen matcher transition-tiden
 }
 
-// Kaldes når brugeren klikker på krydset
+// Kaldes når brugeren klikker på krydset (lukker formularen)
 const closeForm = () => {
   emit("close")
 }
