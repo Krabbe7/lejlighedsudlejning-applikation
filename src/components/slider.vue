@@ -1,6 +1,6 @@
 <template>
   <h2>Billeder</h2>
-  <section class="gallery">
+  <div class="gallery">
     <div id="slider">
       <div class="slider-container">
         <img
@@ -37,7 +37,7 @@
       <button class="prev">&#10094;</button>
       <button class="next">&#10095;</button>
     </div>
-  </section>
+  </div>
 </template>
 
 <script setup>
